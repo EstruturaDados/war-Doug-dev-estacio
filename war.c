@@ -31,7 +31,7 @@
 
 // --- Função Principal (main) ---
 // Função principal que orquestra o fluxo do jogo, chamando as outras funções em ordem.
-int main() {
+
     // 1. Configuração Inicial (Setup):
     // - Define o locale para português.
     // - Inicializa a semente para geração de números aleatórios com base no tempo atual.
@@ -50,9 +50,6 @@ int main() {
 
     // 3. Limpeza:
     // - Ao final do jogo, libera a memória alocada para o mapa para evitar vazamentos de memória.
-
-    return 0;
-}
 
 // --- Implementação das Funções ---
 
@@ -96,3 +93,49 @@ int main() {
 
 // limparBufferEntrada():
 // Função utilitária para limpar o buffer de entrada do teclado (stdin), evitando problemas com leituras consecutivas de scanf e getchar.
+#include <stdio.h>
+#include <string.h>
+
+// Definição da struct Territorio
+// Armazena nome, cor do exército e quantidade de tropas
+
+
+
+typedef struct {
+    char nome[30];
+    char cor[10];
+    int tropas;
+} Territorio;
+
+int main() {
+    // Vetor de 5 territórios
+    Territorio territorios[5];
+
+    // Cadastro dos 5 territórios
+    for (int i = 0; i < 5; i++) {
+        printf("\nCadastro do território %d\n", i + 1);
+
+        // Lê o nome do território
+        printf("Digite o nome do território: ");
+        scanf(" %[^\n]", territorios[i].nome); // lê string com espaços
+
+        // Lê a cor do exército
+        printf("Digite a cor do exército: ");
+        scanf(" %[^\n]", territorios[i].cor);
+
+        // Lê a quantidade de tropas
+        printf("Digite a quantidade de tropas: ");
+        scanf("%d", &territorios[i].tropas);
+    }
+
+    // Exibição dos dados cadastrados
+    printf("\n--- Lista de Territórios Cadastrados ---\n");
+    for (int i = 0; i < 5; i++) {
+        printf("Nome: %s | Cor: %s | Tropas: %d\n",
+               territorios[i].nome,
+               territorios[i].cor,
+               territorios[i].tropas);
+    }
+
+    return 0;
+}
